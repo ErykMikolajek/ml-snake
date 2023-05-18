@@ -22,9 +22,9 @@ class Snake:
 	body: []
 	direction: Directions
 	
-	def __init__(self):
-		self.body = [SnakeNode(0, 0)]
-		self.direction = Directions.RIGHT
+	def __init__(self, start_x, start_y, start_dir):
+		self.body = [SnakeNode(start_x, start_y)]
+		self.direction = start_dir
 
 	def change_direction(self, new_direction: Directions):
 		self.direction = new_direction
@@ -59,3 +59,11 @@ class Snake:
 			if self.body[0].position_x == body_part.position_x and self.body[0].position_y == body_part.position_y:
 				return True
 		return False
+
+	def get_cords_arrays(self):
+		x_cords = []
+		y_cords = []
+		for snake_part in self.body:
+			x_cords.append(snake_part.position_x)
+			y_cords.append(snake_part.position_y)
+		return x_cords, y_cords
